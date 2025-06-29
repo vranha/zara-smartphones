@@ -1,0 +1,18 @@
+# Tratar todos los archivos como 'auto' por defecto. Git decidirá si es texto o binario.
+* text=auto eol=lf
+
+# Forzar explícitamente los archivos de texto comunes a tener finales de línea LF.
+*.js eol=lf
+*.jsx eol=lf
+*.ts eol=lf
+*.tsx eol=lf
+*.json eol=lf
+*.scss eol=lf
+*.md eol=lf
+*.html eol=lf
+*.css eol=lf
+*.yml eol=lf
+
+# Declarar explícitamente los archivos que NO son de texto.
+*.png binary
+*.jpg binary
