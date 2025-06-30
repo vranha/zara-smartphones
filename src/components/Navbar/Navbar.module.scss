@@ -30,12 +30,23 @@
   }
 }
 
-.cart {
+.cartContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--spacing-s);
-  font-size: var(--font-size-base);
-  font-weight: 500;
   text-decoration: none;
   color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  
+  img {
+    display: block;
+  }
+  
+  span {
+    align-self: flex-end;
+    line-height: 1;
+    font-weight: 400;
+  }
 }
+
+

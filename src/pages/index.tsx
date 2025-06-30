@@ -7,6 +7,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import PhoneCard from '@/components/PhoneCard/PhoneCard';
 import SkeletonCard from '@/components/SkeletonCard/SkeletonCard';
 import styles from '@/styles/Home.module.scss';
+import Image from 'next/image';
 
 const HomePage: NextPage = () => {
   const [products, setProducts] = useState<ProductListItem[]>([]);
@@ -35,6 +36,10 @@ const HomePage: NextPage = () => {
         setIsLoading(false);
       });
   }, [debouncedSearchTerm]);
+
+  const clearSearch = () => {
+    setSearchTerm('');
+  };
 
   const renderContent = () => {
     if (error) {
@@ -70,15 +75,27 @@ const HomePage: NextPage = () => {
   return (
     <div className={styles.homeContainer}>
       <header className={styles.header}>
-        <input
-          type="text"
-          placeholder="Buscar por marca o nombre..."
-          className={styles.searchInput}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            placeholder="Search for a smartphone..."
+            className={styles.searchInput}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {searchTerm && (
+            <button
+              type="button"
+              className={styles.clearButton}
+              onClick={clearSearch}
+              aria-label="Clear search"
+            >
+              <Image src="/icons/close.svg" alt="Clear" width={10} height={10} />
+            </button>
+          )}
+        </div>
         {!isLoading && !error && (
-          <span className={styles.resultsCount}>{products.length} resultados</span>
+          <span className={styles.resultsCount}>{products.length} results</span>
         )}
       </header>
 

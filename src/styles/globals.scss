@@ -1,7 +1,8 @@
 :root {
   // --- Paleta de Colores ---
   --color-text-primary: #000000;
-  --color-text-secondary: #868686;
+  --color-text-secondary: #636363;
+  --color-text-placeholder: #bebebe;
   --color-background: #ffffff;           // Tu color de fondo original
   --color-border-dark: #9F9F9F;
   --color-card-background: #ffffff;
@@ -12,11 +13,11 @@
 
   // --- Tipografía ---
   --font-primary: 'Helvetica', 'Arial', sans-serif;
-  --font-size-base: 18px     
-  --font-size-small: 15px  
-  --font-size-xsmall: 12px
-  --font-size-xxsmall: 10px 
-  --font-size-large: 24px  
+  --font-size-base: 1rem;      
+  --font-size-small: 0.9rem;   
+  --font-size-xsmall: 0.70rem; 
+  --font-size-xxsmall: 0.60rem; 
+  --font-size-large: 1.5rem;
 
   // --- Espaciados y Tamaños ---
   --spacing-xs: 5px;
