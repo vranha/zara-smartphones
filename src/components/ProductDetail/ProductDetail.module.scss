@@ -1,0 +1,193 @@
+// src/components/ProductDetail/ProductDetail.module.scss
+@import '@/styles/variables';
+
+// Contenedor principal de dos columnas
+.detailContainer {
+  display: grid;
+  gap: var(--spacing-xxxl);
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
+}
+
+// Columna Izquierda
+.imageGallery {
+  width: 100%;
+}
+.mainImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; // Mantiene la imagen cuadrada
+}
+
+// Columna Derecha
+.productInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-size: var(--font-size-xsmall);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-s);
+}
+
+.name {
+  font-size: var(--font-size-xlarge);
+  font-weight: 4 00;
+  margin: 0;
+}
+
+.price {
+  font-size: var(--font-size-large);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-s);
+}
+
+.options {
+  margin-top: var(--spacing-xxl);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.selectorTitle {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-m);
+
+  span {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+}
+
+.optionsContainer {
+  display: flex;
+  gap: var(--spacing-m);
+  margin: var(--spacing-s) 0;
+}
+
+.colorSwatch {
+  margin-top: var(--spacing-m);
+  margin-bottom: var(--spacing-xs);
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  transition: outline 0.2s ease;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+  outline-color: var(--color-text-placeholder);
+
+  &:hover {
+    outline-color: var(--color-text-primary);
+  }
+
+  &.selected {
+    outline-color: var(--color-text-primary);
+  }
+}
+
+.colorName {
+  margin-top: var(--spacing-s);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+  min-height: 20px; // Para evitar que el layout salte cuando cambia el texto
+  transition: color 0.2s ease;
+}
+
+.optionButton {
+  padding: var(--spacing-s) var(--spacing-m);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-base);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: var(--font-size-small);
+
+  &.selected {
+    border-color: var(--color-text-primary);
+  }
+}
+
+.addToCartButton {
+  width: 100%;
+  padding: var(--spacing-xl);
+  font-size: var(--font-size-small);
+  color: var(--color-surface);
+  background-color: var(--color-text-primary);
+  color: var(--color-background);
+  border: 0px;
+  cursor: pointer;
+  margin-top: auto;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &.disabled,
+  &:disabled {
+    background-color: var(--color-disabled);
+    color: var(--color-text-placeholder);
+    cursor: auto;
+  }
+}
+
+// --- Estilos para las nuevas secciones ---
+.sectionTitle {
+  font-size: var(--font-size-xsmall);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-m);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+// Specs
+.specsContainer {
+  padding-bottom: var(--spacing-xxl);
+}
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-l);
+}
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-m) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+.specKey {
+  text-transform: capitalize;
+  color: var(--color-text-secondary);
+}
+.specValue {
+  font-weight: 500;
+}
+
+// Similar Items
+.similarContainer {
+  padding-bottom: var(--spacing-xxl);
+}
+.similarGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); // 5 columnas como en el diseño
+  gap: var(--spacing-l);
+
+  // En móvil, hacemos que sea un scroll horizontal
+  @media (max-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(5, 220px); // Ancho fijo para las tarjetas en scroll
+    overflow-x: auto;
+    padding-bottom: var(--spacing-m);
+  }
+}

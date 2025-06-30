@@ -4,9 +4,9 @@ import { NextPage } from 'next';
 import { productService } from '@/services/productService';
 import { ProductListItem } from '@/types/Product';
 import { useDebounce } from '@/hooks/useDebounce';
-import styles from '@/styles/Home.module.scss';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { ProductGrid } from '@/components/ProductGrid/ProductGrid';
+import { Container } from '@/components/Container/Container';
 
 const HomePage: NextPage = () => {
   const [products, setProducts] = useState<ProductListItem[]>([]);
@@ -37,7 +37,7 @@ const HomePage: NextPage = () => {
   }, [debouncedSearchTerm]);
 
   return (
-    <div className={styles.homeContainer}>
+    <Container>
       <SearchInput
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -54,7 +54,7 @@ const HomePage: NextPage = () => {
           searchTerm={debouncedSearchTerm}
         />
       </main>
-    </div>
+    </Container>
   );
 };
 
