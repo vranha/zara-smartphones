@@ -4,10 +4,9 @@ import { NextPage } from 'next';
 import { productService } from '@/services/productService';
 import { ProductListItem } from '@/types/Product';
 import { useDebounce } from '@/hooks/useDebounce';
-import PhoneCard from '@/components/PhoneCard/PhoneCard';
-import SkeletonCard from '@/components/SkeletonCard/SkeletonCard';
 import styles from '@/styles/Home.module.scss';
-import Image from 'next/image';
+import { SearchInput } from '@/components/SearchInput/SearchInput';
+import { ProductGrid } from '@/components/ProductGrid/ProductGrid';
 
 const HomePage: NextPage = () => {
   const [products, setProducts] = useState<ProductListItem[]>([]);
@@ -37,69 +36,24 @@ const HomePage: NextPage = () => {
       });
   }, [debouncedSearchTerm]);
 
-  const clearSearch = () => {
-    setSearchTerm('');
-  };
-
-  const renderContent = () => {
-    if (error) {
-      return <p className={styles.errorState}>{error}</p>;
-    }
-
-    if (isLoading) {
-      return (
-        <div className={styles.phoneGrid}>
-          {Array.from({ length: 8 }).map((_, index) => (
-            <SkeletonCard key={index} />
-          ))}
-        </div>
-      );
-    }
-
-    if (products.length === 0) {
-      if (debouncedSearchTerm) {
-        return <p>No se han encontrado resultados para &quot;{debouncedSearchTerm}&quot;.</p>;
-      }
-      return <p>No hay productos disponibles en este momento.</p>;
-    }
-
-    return (
-      <div className={styles.phoneGrid}>
-        {products.map((product) => (
-          <PhoneCard key={product.id} product={product} />
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div className={styles.homeContainer}>
-      <header className={styles.header}>
-        <div className={styles.inputContainer}>
-          <input
-            type="text"
-            placeholder="Search for a smartphone..."
-            className={styles.searchInput}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          {searchTerm && (
-            <button
-              type="button"
-              className={styles.clearButton}
-              onClick={clearSearch}
-              aria-label="Clear search"
-            >
-              <Image src="/icons/close.svg" alt="Clear" width={10} height={10} />
-            </button>
-          )}
-        </div>
-        {!isLoading && !error && (
-          <span className={styles.resultsCount}>{products.length} results</span>
-        )}
-      </header>
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        resultsCount={products.length}
+        isLoading={isLoading}
+      ></SearchInput>
 
-      <main>{renderContent()}</main>
+      <main>
+        {' '}
+        <ProductGrid
+          isLoading={isLoading}
+          error={error}
+          products={products}
+          searchTerm={debouncedSearchTerm}
+        />
+      </main>
     </div>
   );
 };

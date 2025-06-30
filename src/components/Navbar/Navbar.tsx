@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './Navbar.module.scss';
 import Image from 'next/image';
+import { Icon } from '@/components/Icon/Icon';
 
 export default function Navbar() {
   return (
@@ -10,7 +11,7 @@ export default function Navbar() {
           <Image src="/logo.svg" alt="Carrito" width={80} height={40} />
         </Link>
         <Link className={styles.cartContainer} href="/cart" aria-label="Ver carrito de la compra">
-          <Image src="/icons/bag-empty.svg" alt="Carrito" width={18} height={18} />
+          <Icon name="bag-empty.svg" alt="Carrito vacío" size={18} />
           <span>0</span>
         </Link>
       </div>

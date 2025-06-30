@@ -7,68 +7,6 @@
   padding: 0 var(--container-padding);
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: var(--spacing-l) 0;
-  margin-bottom: var(--spacing-l  );
-
-  .inputContainer {
-    width: 100%;
-
-    margin-bottom: var(--spacing-m);
-    border-bottom: 1px solid var(--color-text-placeholder);
-  }
-
-}
-
-.searchInput {
-  border: none;
-  background: none;
-  font-size: var(--font-size-small);
-  color: var(--color-text-primary);
-  width: 300px;
-  padding: var(--spacing-s) 0;
-
-  &::placeholder {
-    color: var(--color-text-placeholder);
-  }
-
-  &:focus {
-    outline: none;
-
-  }
-}
-
-.clearButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 1;
-  }
-
-}
-
-.resultsCount {
-  font-size: var(--font-size-xsmall);
-  color: var(--color-text-primary);
-  text-transform: uppercase;
-}
-
-.phoneGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  padding: 0 0 var(--spacing-xxl);
-}
-
 .errorState {
   color: var(--color-error-text);
   background-color: var(--color-error-background);

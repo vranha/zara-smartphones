@@ -73,6 +73,7 @@ transition:
 
 .model {
   font-size: var(--font-size-xsmall);
+  font-weight: 100;
   color: var(--color-text-primary);
   text-transform: uppercase; 
   transition: color 0.2s ease-in-out;
