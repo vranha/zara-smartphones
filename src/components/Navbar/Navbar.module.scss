@@ -1,0 +1,41 @@
+@import '@/styles/variables.scss';
+
+.navbar {
+  width: 100%;
+  background-color: var(--color-background);
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+}
+
+.navContent {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: var(--font-size-large);
+  font-family: var(--font-primary);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 700;
+
+  span {
+    font-weight: 400;
+  }
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-text-primary);
+}

@@ -6,6 +6,16 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(process.cwd(), 'src')],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'prueba-tecnica-api-tienda-moviles.onrender.com',
+        port: '',
+        pathname: '/images/**', // Permite todas las imágenes que estén en /images/
+      },
+    ],
+  },
 };
 
 export default nextConfig;
