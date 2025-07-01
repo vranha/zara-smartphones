@@ -1,20 +1,10 @@
 @import '@/styles/variables';
 
-.homeContainer {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
+.mainContent {
+  padding-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
 }
 
-.errorState {
-  color: var(--color-error-text);
-  background-color: var(--color-error-background);
-  border: 1px solid var(--color-error-text);
-  padding: var(--spacing-m);
-  border-radius: var(--border-radius-base);
-  text-align: center;
-}
 
 @media (max-width: $breakpoint-tablet) {
   .header {

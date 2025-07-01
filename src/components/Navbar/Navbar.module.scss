@@ -1,6 +1,11 @@
 @import '@/styles/variables.scss';
 
 .navbar {
+position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200; // Mayor que el header del ProductDetail
   width: 100%;
   background-color: var(--color-background);
   height: var(--navbar-height);
