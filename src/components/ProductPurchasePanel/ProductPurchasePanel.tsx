@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { ProductDetail as ProductDetailType } from '@/types/Product';
 import styles from './ProductPurchasePanel.module.scss';
-
-// Podrías incluso crear componentes más pequeños para los selectores de color y almacenamiento.
+import { useCart } from '@/hooks/useCart';
+import { CartItem } from '@/context/cart/CartContext';
+import toast from 'react-hot-toast';
 
 interface Props {
   product: ProductDetailType;
@@ -13,19 +14,37 @@ interface Props {
 export const ProductPurchasePanel = ({ product, selectedColor, setSelectedColor }: Props) => {
   const [selectedStorage, setSelectedStorage] = useState(product.storageOptions[0]);
   const [hoveredColor, setHoveredColor] = useState<string | null>(null);
+  const { cart, dispatch } = useCart();
 
-  const finalPrice = useMemo(() => {
-    return product.basePrice + selectedStorage.price;
-  }, [product.basePrice, selectedStorage]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedColor || !selectedStorage) {
+      return;
+    }
 
-  const handleAddToCart = () => {
-    console.log('Añadiendo al carrito:', {
-      id: product.id,
-      color: selectedColor?.name,
+    const itemId = `${product.id}-${selectedColor.hexCode}-${selectedStorage.capacity}`;
+
+    // Verificar si el producto ya está en el carrito
+    const existingItem = cart.find((item) => item.id === itemId);
+
+    if (existingItem) {
+      toast.error(`Este teléfono ya está en el carrito`);
+      return;
+    }
+
+    const itemToAdd: CartItem = {
+      id: `${product.id}-${selectedColor.hexCode}-${selectedStorage.capacity}`,
+      name: product.name,
+      brand: product.brand,
+      price: product.basePrice ? product.basePrice : 0,
+      imageUrl: selectedColor.imageUrl,
+      color: selectedColor.name,
       storage: selectedStorage.capacity,
-      price: finalPrice,
-    });
-    alert('Producto añadido (ver consola)');
+    };
+
+    dispatch({ type: 'ADD_TO_CART', payload: itemToAdd });
+
+    toast.success(`${product.brand} ${product.name} añadido al carrito`);
   };
 
   return (
@@ -72,7 +91,7 @@ export const ProductPurchasePanel = ({ product, selectedColor, setSelectedColor 
 
       <button
         className={`${styles.addToCartButton} ${!selectedColor ? styles.disabled : ''}`}
-        onClick={handleAddToCart}
+        onClick={handleSubmit}
         disabled={!selectedColor || !selectedStorage}
       >
         AÑADIR

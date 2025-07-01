@@ -1,7 +1,7 @@
 @import '@/styles/variables.scss';
 
 .navbar {
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -11,6 +11,12 @@ position: fixed;
   height: var(--navbar-height);
   display: flex;
   align-items: center;
+  padding-top: var(--spacing-m);
+   border-bottom: 1px solid transparent;
+
+    &.withBorder {
+    border-bottom: 1px solid var(--color-text-primary);
+  }
 }
 
 .navContent {
@@ -38,11 +44,11 @@ position: fixed;
   text-decoration: none;
   color: var(--color-text-primary);
   font-size: var(--font-size-base);
-  
+
   img {
     display: block;
   }
-  
+
   span {
     align-self: flex-end;
     line-height: 1;
@@ -50,4 +56,6 @@ position: fixed;
   }
 }
 
-
+.cartItemCount {
+  font-size: var(--font-size-small);
+}
