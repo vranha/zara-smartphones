@@ -1,0 +1,73 @@
+@import '@/styles/variables';
+
+.similarContainer {
+  padding-bottom: var(--spacing-xxl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: none;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-primary);
+}
+
+.similarGrid {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-bottom: var(--spacing-m);
+  cursor: grab;
+  
+  &:active {
+    cursor: grabbing;
+  }
+  
+  // Ocultar scrollbar nativo
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // Internet Explorer 10+
+  
+  &::-webkit-scrollbar {
+    display: none; // Safari y Chrome
+  }
+
+  // Cada item del grid
+  > * {
+    flex: 0 0 220px; // Ancho fijo de cada producto
+    min-width: 220px;
+    pointer-events: auto; // Permitir eventos en los productos
+  }
+}
+
+.scrollbarContainer {
+  position: relative;
+  height: 2px;
+  background-color: var(--color-disabled);
+  border-radius: 2px;
+  margin-top: var(--spacing-s);
+}
+
+.scrollbarThumb {
+  position: absolute;
+  height: 100%;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: var(--color-text-secondary);
+  }
+
+  &:active {
+    background-color: var(--color-text-primary);
+    cursor: grabbing;
+  }
+}

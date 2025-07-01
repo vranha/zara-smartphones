@@ -1,0 +1,112 @@
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px; 
+  
+}
+
+.name {
+  font-size: var(--font-size-xlarge);
+  font-weight: 4 00;
+  margin: 0;
+}
+
+.price {
+  font-size: var(--font-size-large);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-s);
+}
+
+.options {
+  margin-top: var(--spacing-xxl);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.selectorTitle {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-m);
+
+  span {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+}
+
+.optionsContainer {
+  display: flex;
+  margin: var(--spacing-s) 0;
+}
+.optionsContainerColor {
+  display: flex;
+  margin: var(--spacing-s) 0;
+    gap: var(--spacing-m);
+}
+
+.colorSwatch {
+  margin-top: var(--spacing-m);
+  margin-bottom: var(--spacing-xs);
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  transition: outline 0.2s ease;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+  outline-color: var(--color-text-placeholder);
+
+  &:hover {
+    outline-color: var(--color-text-primary);
+  }
+
+  &.selected {
+    outline-color: var(--color-text-primary);
+  }
+}
+
+.colorName {
+  margin-top: var(--spacing-s);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+  min-height: 20px;
+  transition: color 0.2s ease;
+}
+
+.optionButton {
+  padding: var(--spacing-l) var(--spacing-l);
+  border: 1px solid var(--color-border-dark);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: var(--font-size-small);
+
+  &.selected {
+    border-color: var(--color-text-primary);
+  }
+}
+
+.addToCartButton {
+  width: 100%;
+  padding: var(--spacing-xl);
+  font-size: var(--font-size-small);
+  color: var(--color-background);
+  background-color: var(--color-text-primary);
+  color: var(--color-background);
+  border: 0px;
+  cursor: pointer;
+  margin-top: auto;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &.disabled,
+  &:disabled {
+    background-color: var(--color-disabled);
+    color: var(--color-text-placeholder);
+    cursor: auto;
+  }
+}
