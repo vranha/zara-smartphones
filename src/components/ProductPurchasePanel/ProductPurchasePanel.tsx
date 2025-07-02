@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ProductDetail as ProductDetailType } from '@/types/Product';
 import styles from './ProductPurchasePanel.module.scss';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/context/cart/CartContext';
 import { CartItem } from '@/context/cart/CartContext';
 import toast from 'react-hot-toast';
 

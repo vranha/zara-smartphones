@@ -19,29 +19,52 @@ const ProductDetailPage: NextPage<PageProps> = ({ product }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const products = await productService.getProducts();
+  const abortController = new AbortController();
 
-  const paths = products.map((product) => ({
-    params: { id: product.id },
-  }));
+  try {
+    const products = await productService.getProducts('', abortController.signal);
 
-  return { paths, fallback: false }; // Si la ID no existe, dará un 404
+    const paths = products.slice(0, 10).map((product) => ({
+      params: { id: product.id },
+    }));
+
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  } catch (error) {
+    console.error('Error in getStaticPaths:', error);
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 };
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (context) => {
   const { id } = context.params!;
+  const abortController = new AbortController();
 
   try {
-    const product = await productService.getProductById(id);
+    const product = await productService.getProductById(id, abortController.signal);
+
+    // Verificar que el producto sea válido
+    if (!product || !product.id) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
       props: {
         product,
       },
-      revalidate: 3600, // Revalida la página cada hora para actualizar datos
+      revalidate: 3600,
     };
-  } catch {
+  } catch (error) {
+    console.error(`Error fetching product ${id}:`, error);
     return {
-      notFound: true, // Si el producto no se encuentra, devuelve una página 404
+      notFound: true,
     };
   }
 };

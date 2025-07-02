@@ -4,7 +4,7 @@ import styles from './Navbar.module.scss';
 import Image from 'next/image';
 import { Icon } from '@/components/Icon/Icon';
 import { Container } from '@/components/Container/Container';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/context/cart/CartContext';
 import { useEffect, useState } from 'react';
 
 export default function Navbar() {

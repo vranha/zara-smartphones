@@ -16,26 +16,51 @@ export const useProducts = (searchTerm: string) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     const fetchProducts = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
-        const data = await productService.getProducts(searchTerm);
+        const data = await productService.getProducts(searchTerm, abortController.signal);
+
+        // Verificar si la operación fue cancelada
+        if (abortController.signal.aborted) {
+          return;
+        }
+
+        // Verificar que data sea un array válido
+        if (!Array.isArray(data)) {
+          throw new Error('Respuesta inválida del servidor');
+        }
+
         const uniqueProducts = getUniqueProducts(data);
         const limitedProducts = uniqueProducts.slice(0, PRODUCTS_LIMIT);
         setProducts(limitedProducts);
       } catch (error) {
-        console.error(error);
-        setError(
-          '¡Ups! Algo ha salido mal al cargar los productos. Por favor, inténtalo de nuevo más tarde.',
-        );
+        // Ignorar errores si la operación fue cancelada
+        if (abortController.signal.aborted || (error as Error)?.name === 'AbortError') {
+          return;
+        }
+
+        console.error('Error fetching products:', error);
+        setError('Error al cargar los productos. Por favor, inténtalo de nuevo.');
+        setProducts([]); // Asegurar que products sea siempre un array
       } finally {
-        setIsLoading(false);
+        // Solo actualizar el estado si no fue cancelado
+        if (!abortController.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchProducts();
+
+    // Cleanup: cancelar la petición cuando el efecto se desmonte
+    return () => {
+      abortController.abort();
+    };
   }, [searchTerm]);
 
   return {

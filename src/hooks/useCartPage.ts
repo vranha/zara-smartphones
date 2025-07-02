@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/context/cart/CartContext';
 import toast from 'react-hot-toast';
 
 export const useCartPage = () => {
