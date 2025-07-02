@@ -9,6 +9,8 @@
   flex-direction: column;
   gap: var(--spacing-xxl);
 
-  padding-top: var(--spacing-xxl);
-}
 
+  @media (min-width: $breakpoint-tablet) {
+    padding-top: var(--spacing-l);
+  }
+}

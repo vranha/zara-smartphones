@@ -14,8 +14,11 @@
   padding-top: var(--spacing-m);
    border-bottom: 1px solid transparent;
 
-    &.withBorder {
-    border-bottom: 1px solid var(--color-text-primary);
+  &.withBorder {
+    // Solo aplicar el borde en pantallas superiores a tablet
+    @media (min-width: $breakpoint-desktop) {
+      border-bottom: 1px solid var(--color-text-primary);
+    }
   }
 }
 

@@ -29,19 +29,26 @@
     cursor: grabbing;
   }
   
-  // Ocultar scrollbar nativo
-  scrollbar-width: none; // Firefox
-  -ms-overflow-style: none; // Internet Explorer 10+
+
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
   
   &::-webkit-scrollbar {
-    display: none; // Safari y Chrome
+    display: none; 
   }
 
   // Cada item del grid
   > * {
-    flex: 0 0 220px; // Ancho fijo de cada producto
-    min-width: 220px;
-    pointer-events: auto; // Permitir eventos en los productos
+    // Móvil: objetos más grandes (280px)
+    flex: 0 0 320px;
+    min-width: 320px;
+    pointer-events: auto;
+    
+    // Desktop: objetos un poco más grandes (240px)
+    @media (min-width: $breakpoint-desktop) {
+      flex: 0 0 240px;
+      min-width: 240px;
+    }
   }
 }
 

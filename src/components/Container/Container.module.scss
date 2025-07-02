@@ -1,8 +1,15 @@
+@import '@/styles/variables';
+
 .container {
   width: 100%;
   max-width: var(--container-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+
+  @media (min-width: $breakpoint-mobile) {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
 }

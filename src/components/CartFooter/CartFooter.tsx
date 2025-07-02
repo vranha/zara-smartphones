@@ -9,14 +9,15 @@ interface CartFooterProps {
 export const CartFooter = ({ totalPrice, onPay }: CartFooterProps) => {
   return (
     <footer className={styles.cartFooter}>
-      <Link href="/" className={styles.continueButton}>
-        CONTINUE SHOPPING
-      </Link>
-      <div className={styles.rightFooterSection}>
-        <div className={styles.totalSection}>
-          <span>TOTAL</span>
-          <span className={styles.totalPrice}>{totalPrice.toFixed(2)} EUR</span>
-        </div>
+      <div className={styles.totalSection}>
+        <span>TOTAL</span>
+        <span className={styles.totalPrice}>{totalPrice.toFixed(2)} EUR</span>
+      </div>
+
+      <div className={styles.buttonsRow}>
+        <Link href="/" className={styles.continueButton}>
+          CONTINUE SHOPPING
+        </Link>
         <button className={styles.payButton} onClick={onPay}>
           PAY
         </button>

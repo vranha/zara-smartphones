@@ -1,19 +1,35 @@
-// src/components/ProductDetail/ProductDetail.module.scss
 @import '@/styles/variables';
 
 .detailContainer {
   display: grid;
-  gap: var(--spacing-xxl);
-  padding-top: var(--spacing-xxl);
-  padding-bottom: var(--spacing-xxl);
+  gap: var(--spacing-l);
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
   margin-top: var(--navbar-height);
-  max-width: 1200px; // Limita el ancho máximo
-  margin-left: auto;
-  margin-right: auto;
-
+  // Mobile: una columna
+  grid-template-columns: 1fr;
+  padding-left: var(--spacing-l);
+  padding-right: var(--spacing-l);
+  
+  // Tablet: dos columnas
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: var(--spacing-xl);
+  }
+  
+  // Desktop: ajustar proporciones
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: 1.2fr 0.8fr; // La imagen un poco más grande
+    gap: var(--spacing-xxl);
   }
 }
 
+.productInfo {
+  // Este div parece vacío, puedes eliminarlo si no lo usas
+  display: none;
+  
+  @media (min-width: $breakpoint-desktop) {
+    display: block;
+    grid-column: 1 / -1; // Ocupa toda la fila
+  }
+}

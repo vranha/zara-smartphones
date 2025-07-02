@@ -1,9 +1,19 @@
+@import '@/styles/variables';
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: 1fr; // Una columna por defecto (móvil)
   padding: 0 0 var(--spacing-xxl);
-}
+  
 
+  @media (min-width: $breakpoint-mobile) {
+    grid-template-columns: repeat(2, 1fr); // Dos columnas en tablet
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // Auto-fill en desktop
+  }
+}
 
 .errorState {
   color: var(--color-error-text);

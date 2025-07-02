@@ -6,18 +6,44 @@
   left: 0;
   width: 100%;
   background-color: var(--color-background);
-  padding: var(--spacing-l) var(--container-padding);
+  padding: var(--spacing-l) var(--spacing-m);
+  border-top: 1px solid var(--color-border-light);
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: var(--spacing-s);
+
+  @media (min-width: $breakpoint-mobile) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-l) var(--spacing-m);
+    gap: 0;
+  }
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-l) var(--container-padding);
+    gap: 0;
+  }
+}
+
+.buttonsRow {
+  display: flex;
+  gap: var(--spacing-s);
+  order: 2;
+
+  @media (min-width: $breakpoint-mobile) {
+    display: contents;
+  }
 }
 
 .continueButton {
   background: transparent;
   border: 1px solid var(--color-text-primary);
   color: var(--color-text-primary);
-  padding: var(--spacing-l) 0;
-  width: 270px;
+  padding: var(--spacing-m) 0;
   font-size: var(--font-size-xsmall);
   font-weight: 400;
   cursor: pointer;
@@ -26,44 +52,90 @@
   display: flex;
   justify-content: center;
 
+  flex: 1;
+
+  @media (min-width: $breakpoint-mobile) {
+    order: 1;
+    flex: 1;
+
+    min-width: 130px;
+    max-width: 200px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    flex: 1.2;
+    width: 240px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: var(--spacing-l) 0;
+    flex: 1.5;
+    width: 270px;
+  }
+
   &:hover {
     background: var(--color-text-primary);
     color: var(--color-background);
   }
 }
 
-.rightFooterSection {
+.totalSection {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: var(--spacing-xxxl);
+  font-size: var(--font-size-small);
+  padding: 0 var(--spacing-xs);
+  order: 1;
+  flex: 1 1 auto; // Ocupa el espacio disponible entre los botones
 
-  .totalSection {
-    display: flex;
-    gap: var(--spacing-l);
-    align-items: center;
-    font-size: var(--font-size-small);
+  @media (min-width: $breakpoint-mobile) {
+    order: 2;
+    gap: var(--spacing-s);
+    flex: 1 1 auto; // Sigue ocupando el espacio disponible
+    white-space: nowrap;
+    margin: 0 var(--spacing-s);
+    justify-content: flex-end;
+    margin-right:var(--spacing-xxl);
   }
 
   .totalPrice {
     font-weight: 500;
     color: var(--color-text-primary);
   }
+}
 
-  .payButton {
-    background: var(--color-text-primary);
-    color: var(--color-background);
-    border: none;
+.payButton {
+  background: var(--color-text-primary);
+  color: var(--color-background);
+  border: none;
+  padding: var(--spacing-m) 0;
+  font-size: var(--font-size-xsmall);
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  flex: 1;
+
+  @media (min-width: $breakpoint-mobile) {
+    order: 3;
+    width: 180px;
+    flex: 1;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    flex: 1.2;
+    width: 240px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
     padding: var(--spacing-l) 0;
+    flex: 1.5;
     width: 270px;
-    font-size: var(--font-size-xsmall);
-    font-weight: 400;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
+  }
 
-    &:hover {
-      opacity: 0.8;
-    }
+  &:hover {
+    opacity: 0.8;
   }
 }

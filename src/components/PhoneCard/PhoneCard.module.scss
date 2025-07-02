@@ -5,7 +5,7 @@
   color: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: center;
   height: 100%;
   gap: var(--spacing-m);
   border: 1px solid var(--color-border-dark);
@@ -44,17 +44,22 @@ transition:
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 250px;
-
+  flex: 1; // Ocupa el espacio disponible
+  display: flex;
+  align-items: center; // Centra verticalmente la imagen
+  justify-content: center; // Centra horizontalmente la imagen
   background-color: transparent;
   padding: var(--spacing-s);
   z-index: 3;
+  min-height: 0; // Permite que flex funcione correctamente
+  margin:  var(--spacing-s) 0; // Espacio alrededor de la imagen
 }
 
 .cardContent {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
 }
 .nameContent {
   display: flex;

@@ -32,9 +32,11 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
         <div className={styles.productInfo}></div>
       </Container>
 
-      <ProductSpecs product={product} />
+      <Container>
+        <ProductSpecs product={product} />
 
-      <SimilarProducts products={product.similarProducts} />
+        <SimilarProducts products={product.similarProducts} />
+      </Container>
     </>
   );
 };

@@ -1,3 +1,5 @@
+@import '@/styles/variables';
+
 .specsContainer {
   padding-top: var(--spacing-xxl);
   padding-bottom: var(--spacing-xxl);
@@ -25,14 +27,22 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--spacing-xxxl);
+
   padding: var(--spacing-l) var(--spacing-xl);
   border-top: 1px solid var(--color-border-dark);
   background-color: var(--color-background);
-  
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: var(--spacing-xl);
+  }
+
+  // Desktop: ajustar proporciones
+  @media (min-width: $breakpoint-desktop) {
+    gap: var(--spacing-xxxl);
+  }
+
   &:last-child {
     border-bottom: 1px solid var(--color-border-dark);
-    
   }
 }
 

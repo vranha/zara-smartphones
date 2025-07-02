@@ -1,9 +1,34 @@
-// Columna Izquierda
+@import '@/styles/variables';
+
 .imageGallery {
-  width: 100%;
+  width: 80%;
+  min-height: 400px; // Altura mínima
+  
+  @media (min-width: $breakpoint-tablet) {
+    min-height: 500px;
+    width: 100%;
+  }
+  
+  @media (min-width: $breakpoint-desktop) {
+    min-height: 600px;
+  }
 }
+
 .mainImage {
-  position: relative;
+  position: relative; // Necesario para Image con fill
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
+  background-color: var(--color-background);
+  padding: var(--spacing-s);
+  
+  @media (min-width: $breakpoint-tablet) {
+    padding: var(--spacing-m);
+  }
+  
+  @media (min-width: $breakpoint-desktop) {
+    padding: var(--spacing-l);
+  }
 }
