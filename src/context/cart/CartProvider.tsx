@@ -10,26 +10,33 @@ const INITIAL_STATE: CartState = {
   cart: [],
 };
 
-const getInitialState = (): CartState => {
-  try {
-    const storedCart = window.localStorage.getItem('cart');
-    if (storedCart) {
-      return { cart: JSON.parse(storedCart) };
-    }
-  } catch (error) {
-    console.error('Error reading from localStorage', error);
-  }
-  return INITIAL_STATE;
-};
-
 export const CartProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(cartReducer, getInitialState());
+  // Siempre inicializar con estado vacío
+  const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
+
+  // Cargar desde localStorage solo en el cliente
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const storedCart = window.localStorage.getItem('cart');
+        if (storedCart) {
+          const parsedCart = JSON.parse(storedCart);
+          // Necesitas agregar una acción para cargar el cart
+          dispatch({ type: 'LOAD_CART', payload: parsedCart });
+        }
+      } catch (error) {
+        console.error('Error reading from localStorage', error);
+      }
+    }
+  }, []);
 
   useEffect(() => {
-    try {
-      window.localStorage.setItem('cart', JSON.stringify(state.cart));
-    } catch (error) {
-      console.error('Error saving to localStorage', error);
+    if (typeof window !== 'undefined') {
+      try {
+        window.localStorage.setItem('cart', JSON.stringify(state.cart));
+      } catch (error) {
+        console.error('Error saving to localStorage', error);
+      }
     }
   }, [state.cart]);
 

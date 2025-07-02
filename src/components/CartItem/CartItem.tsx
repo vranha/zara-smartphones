@@ -16,6 +16,7 @@ export const CartItem = ({ item, onRemove }: CartItemProps) => {
         width={280}
         height={280}
         style={{ objectFit: 'contain' }}
+        priority
       />
       <div className={styles.itemDetails}>
         <div className={styles.itemDetailsTop}>

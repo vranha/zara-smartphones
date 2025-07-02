@@ -1,10 +1,9 @@
-@import '@/styles/variables';
+@use '@/styles/variables' as *;
 
 .grid {
   display: grid;
   grid-template-columns: 1fr; // Una columna por defecto (móvil)
   padding: 0 0 var(--spacing-xxl);
-  
 
   @media (min-width: $breakpoint-mobile) {
     grid-template-columns: repeat(2, 1fr); // Dos columnas en tablet

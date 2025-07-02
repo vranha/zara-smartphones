@@ -1,4 +1,4 @@
-@import '@/styles/variables.scss';
+@use '@/styles/variables' as *;
 
 .card {
   text-decoration: none;
@@ -26,7 +26,9 @@
     background-color: var(--color-background);
     mix-blend-mode: difference;
     opacity: 0;
-transition: top 0.2s ease-in, opacity 0.2s ease-in; // Transición de SALIDA (rápida)
+    transition:
+      top 0.2s ease-in,
+      opacity 0.2s ease-in; // Transición de SALIDA (rápida)
     z-index: 2;
   }
 
@@ -34,9 +36,9 @@ transition: top 0.2s ease-in, opacity 0.2s ease-in; // Transición de SALIDA (r�
     &::before {
       top: 0;
       opacity: 1;
-transition:
-  top 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-  opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transition:
+        top 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
   }
 }
@@ -52,14 +54,13 @@ transition:
   padding: var(--spacing-s);
   z-index: 3;
   min-height: 0; // Permite que flex funcione correctamente
-  margin:  var(--spacing-s) 0; // Espacio alrededor de la imagen
+  margin: var(--spacing-s) 0; // Espacio alrededor de la imagen
 }
 
 .cardContent {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
 }
 .nameContent {
   display: flex;
@@ -80,7 +81,7 @@ transition:
   font-size: var(--font-size-xsmall);
   font-weight: 100;
   color: var(--color-text-primary);
-  text-transform: uppercase; 
+  text-transform: uppercase;
   transition: color 0.2s ease-in-out;
   position: relative;
 }
@@ -89,7 +90,7 @@ transition:
   font-size: var(--font-size-xsmall);
   font-weight: 500;
   color: var(--color-text-primary);
-  text-align: right; 
+  text-align: right;
   transition: color 0.2s ease-in-out;
   position: relative;
 }

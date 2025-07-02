@@ -1,4 +1,4 @@
-@import '@/styles/variables';
+@use '@/styles/variables' as *;
 
 .detailContainer {
   display: grid;
@@ -10,13 +10,13 @@
   grid-template-columns: 1fr;
   padding-left: var(--spacing-l);
   padding-right: var(--spacing-l);
-  
+
   // Tablet: dos columnas
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
   }
-  
+
   // Desktop: ajustar proporciones
   @media (min-width: $breakpoint-desktop) {
     grid-template-columns: 1.2fr 0.8fr; // La imagen un poco más grande
@@ -27,7 +27,7 @@
 .productInfo {
   // Este div parece vacío, puedes eliminarlo si no lo usas
   display: none;
-  
+
   @media (min-width: $breakpoint-desktop) {
     display: block;
     grid-column: 1 / -1; // Ocupa toda la fila

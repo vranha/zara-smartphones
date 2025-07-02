@@ -23,7 +23,7 @@ export default function Navbar() {
     <nav className={`${styles.navbar} ${isCartPage ? styles.withBorder : ''}`}>
       <Container className={styles.navContent}>
         <Link href="/" className={styles.logo}>
-          <Image src="/logo.svg" alt="Carrito" width={80} height={40} />
+          <Image src="/logo.svg" alt="Carrito" width={80} height={40} priority />
         </Link>
 
         {!isCartPage && (

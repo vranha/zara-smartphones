@@ -1,4 +1,4 @@
-@import '@/styles/variables.scss';
+@use '@/styles/variables' as *;
 
 .cartFooter {
   position: fixed;
@@ -95,7 +95,7 @@
     white-space: nowrap;
     margin: 0 var(--spacing-s);
     justify-content: flex-end;
-    margin-right:var(--spacing-xxl);
+    margin-right: var(--spacing-xxl);
   }
 
   .totalPrice {

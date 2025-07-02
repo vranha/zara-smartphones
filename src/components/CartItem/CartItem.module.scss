@@ -1,4 +1,4 @@
-@import '@/styles/variables.scss';
+@use '@/styles/variables' as *;
 
 .cartItem {
   display: flex;
@@ -6,10 +6,9 @@
   align-items: stretch; // Cambiado de flex-start a stretch
   margin-left: -50px;
 
-    @media (min-width: $breakpoint-tablet) {
-   margin-left: 0px;
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 0px;
   }
-  
 
   .itemDetails {
     display: flex;
@@ -17,7 +16,7 @@
     align-items: flex-start;
     justify-content: space-around;
     padding-top: var(--spacing-base);
-  
+
     .itemDetailsTop {
       h2 {
         font-size: var(--font-size-small);
@@ -25,14 +24,14 @@
         margin: 0;
         color: var(--color-text-primary);
       }
-  
+
       p {
         font-size: var(--font-size-small);
         color: var(--color-text-primary);
         margin-top: var(--spacing-xs);
         margin-bottom: var(--spacing-l);
       }
-  
+
       span {
         font-size: var(--font-size-small);
         font-weight: 400;
@@ -41,7 +40,7 @@
       }
     }
   }
-  
+
   .removeLink {
     font-size: var(--font-size-small);
     color: var(--color-error-text);
@@ -51,10 +50,9 @@
     padding: 0;
     margin-top: var(--spacing-l);
     text-decoration: none;
-  
+
     &:hover {
       opacity: 0.8;
     }
   }
 }
-

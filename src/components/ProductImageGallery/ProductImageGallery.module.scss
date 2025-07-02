@@ -1,14 +1,14 @@
-@import '@/styles/variables';
+@use '@/styles/variables' as *;
 
 .imageGallery {
   width: 80%;
   min-height: 400px; // Altura mínima
-  
+
   @media (min-width: $breakpoint-tablet) {
     min-height: 500px;
     width: 100%;
   }
-  
+
   @media (min-width: $breakpoint-desktop) {
     min-height: 600px;
   }
@@ -23,11 +23,11 @@
   height: 100%;
   background-color: var(--color-background);
   padding: var(--spacing-s);
-  
+
   @media (min-width: $breakpoint-tablet) {
     padding: var(--spacing-m);
   }
-  
+
   @media (min-width: $breakpoint-desktop) {
     padding: var(--spacing-l);
   }

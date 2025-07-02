@@ -1,4 +1,4 @@
-@import '@/styles/variables';
+@use '@/styles/variables' as *;
 
 .similarContainer {
   padding-bottom: var(--spacing-xxl);
@@ -24,17 +24,16 @@
   scroll-behavior: smooth;
   padding-bottom: var(--spacing-m);
   cursor: grab;
-  
+
   &:active {
     cursor: grabbing;
   }
-  
 
   scrollbar-width: none;
-  -ms-overflow-style: none; 
-  
+  -ms-overflow-style: none;
+
   &::-webkit-scrollbar {
-    display: none; 
+    display: none;
   }
 
   // Cada item del grid
@@ -43,7 +42,7 @@
     flex: 0 0 320px;
     min-width: 320px;
     pointer-events: auto;
-    
+
     // Desktop: objetos un poco más grandes (240px)
     @media (min-width: $breakpoint-desktop) {
       flex: 0 0 240px;

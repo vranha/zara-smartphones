@@ -2,7 +2,8 @@ import { CartItem, CartState } from './CartContext';
 
 export type CartAction =
   | { type: 'ADD_TO_CART'; payload: CartItem }
-  | { type: 'REMOVE_FROM_CART'; payload: { id: string } };
+  | { type: 'REMOVE_FROM_CART'; payload: { id: string } }
+  | { type: 'LOAD_CART'; payload: CartItem[] };
 
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
@@ -21,6 +22,13 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
+      };
+    }
+
+    case 'LOAD_CART': {
+      return {
+        ...state,
+        cart: action.payload,
       };
     }
 
