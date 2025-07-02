@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
 interface IconProps {
-  name: string; // El nombre del archivo del icono, ej: 'cart-empty.svg'
+  name: string;
   alt: string;
-  size?: number; // Un tamaño opcional para width y height
+  size?: number;
   className?: string;
 }
 
@@ -15,7 +15,7 @@ export const Icon = ({ name, alt, size = 24, className }: IconProps) => {
       width={size}
       height={size}
       className={className}
-      aria-hidden={alt ? false : true} // Mejora de accesibilidad
+      aria-hidden={alt ? false : true}
     />
   );
 };

@@ -1,7 +1,7 @@
 import { ProductListItem } from '@/types/Product';
 import PhoneCard from '@/components/PhoneCard/PhoneCard';
 import SkeletonCard from '@/components/SkeletonCard/SkeletonCard';
-import styles from './ProductGrid.module.scss'; // Puedes mover los estilos de .phoneGrid aquí
+import styles from './ProductGrid.module.scss';
 
 interface ProductGridProps {
   isLoading: boolean;

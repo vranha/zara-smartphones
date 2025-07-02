@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 200; // Mayor que el header del ProductDetail
+  z-index: 200;
   width: 100%;
   background-color: var(--color-background);
   height: var(--navbar-height);
@@ -15,7 +15,6 @@
   border-bottom: 1px solid transparent;
 
   &.withBorder {
-    // Solo aplicar el borde en pantallas superiores a tablet
     @media (min-width: $breakpoint-desktop) {
       border-bottom: 1px solid var(--color-text-primary);
     }

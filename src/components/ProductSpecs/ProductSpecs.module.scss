@@ -36,7 +36,6 @@
     gap: var(--spacing-xl);
   }
 
-  // Desktop: ajustar proporciones
   @media (min-width: $breakpoint-desktop) {
     gap: var(--spacing-xxxl);
   }
@@ -51,7 +50,7 @@
   color: var(--color-text-primary);
   font-size: var(--font-size-xsmall);
   font-weight: 400;
-  flex: 0 0 200px; // Ancho fijo para las claves
+  flex: 0 0 200px;
 }
 
 .specValue {

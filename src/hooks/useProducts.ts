@@ -25,12 +25,10 @@ export const useProducts = (searchTerm: string) => {
       try {
         const data = await productService.getProducts(searchTerm, abortController.signal);
 
-        // Verificar si la operación fue cancelada
         if (abortController.signal.aborted) {
           return;
         }
 
-        // Verificar que data sea un array válido
         if (!Array.isArray(data)) {
           throw new Error('Respuesta inválida del servidor');
         }
@@ -39,16 +37,14 @@ export const useProducts = (searchTerm: string) => {
         const limitedProducts = uniqueProducts.slice(0, PRODUCTS_LIMIT);
         setProducts(limitedProducts);
       } catch (error) {
-        // Ignorar errores si la operación fue cancelada
         if (abortController.signal.aborted || (error as Error)?.name === 'AbortError') {
           return;
         }
 
         console.error('Error fetching products:', error);
         setError('Error al cargar los productos. Por favor, inténtalo de nuevo.');
-        setProducts([]); // Asegurar que products sea siempre un array
+        setProducts([]);
       } finally {
-        // Solo actualizar el estado si no fue cancelado
         if (!abortController.signal.aborted) {
           setIsLoading(false);
         }
@@ -57,7 +53,6 @@ export const useProducts = (searchTerm: string) => {
 
     fetchProducts();
 
-    // Cleanup: cancelar la petición cuando el efecto se desmonte
     return () => {
       abortController.abort();
     };

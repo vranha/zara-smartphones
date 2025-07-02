@@ -15,7 +15,6 @@ export const useCartPage = () => {
   };
 
   const handlePay = () => {
-    // Lógica de pago aquí
     toast.success('Procesando pago...');
   };
 

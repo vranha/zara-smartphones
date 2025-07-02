@@ -3,7 +3,7 @@
 .cartItem {
   display: flex;
   gap: var(--spacing- xl);
-  align-items: stretch; // Cambiado de flex-start a stretch
+  align-items: stretch;
   margin-left: -50px;
 
   @media (min-width: $breakpoint-tablet) {

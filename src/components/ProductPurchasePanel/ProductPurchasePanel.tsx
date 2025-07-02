@@ -24,7 +24,6 @@ export const ProductPurchasePanel = ({ product, selectedColor, setSelectedColor 
 
     const itemId = `${product.id}-${selectedColor.hexCode}-${selectedStorage.capacity}`;
 
-    // Verificar si el producto ya está en el carrito
     const existingItem = cart.find((item) => item.id === itemId);
 
     if (existingItem) {

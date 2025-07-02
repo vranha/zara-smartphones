@@ -86,12 +86,12 @@
   font-size: var(--font-size-small);
   padding: 0 var(--spacing-xs);
   order: 1;
-  flex: 1 1 auto; // Ocupa el espacio disponible entre los botones
+  flex: 1 1 auto;
 
   @media (min-width: $breakpoint-mobile) {
     order: 2;
     gap: var(--spacing-s);
-    flex: 1 1 auto; // Sigue ocupando el espacio disponible
+    flex: 1 1 auto;
     white-space: nowrap;
     margin: 0 var(--spacing-s);
     justify-content: flex-end;

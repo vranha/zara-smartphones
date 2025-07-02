@@ -1,0 +1,126 @@
+@use '@/styles/variables' as *;
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 4px;
+  background-color: var(--color-background);
+  overflow: hidden;
+  justify-content: flex-start;
+  width: max-content;
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.small {
+    .decreaseButton,
+    .increaseButton {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+    }
+
+    .quantityInput {
+      width: 40px;
+      height: 28px;
+      font-size: 12px;
+    }
+  }
+
+  &.medium {
+    .decreaseButton,
+    .increaseButton {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
+
+    .quantityInput {
+      width: 50px;
+      height: 36px;
+      font-size: 14px;
+    }
+  }
+
+  &.large {
+    .decreaseButton,
+    .increaseButton {
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+    }
+
+    .quantityInput {
+      width: 60px;
+      height: 44px;
+      font-size: 16px;
+    }
+  }
+}
+
+.decreaseButton,
+.increaseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-weight: 500;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-border-light);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-border-dark);
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+  }
+}
+
+.decreaseButton {
+  border-right: 1px solid var(--color-border-dark);
+}
+
+.increaseButton {
+  border-left: 1px solid var(--color-border-dark);
+}
+
+.quantityInput {
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  outline: none;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  &:focus {
+    background-color: var(--color-background-accent);
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+  }
+}

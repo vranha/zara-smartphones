@@ -11,17 +11,14 @@ const INITIAL_STATE: CartState = {
 };
 
 export const CartProvider = ({ children }: Props) => {
-  // Siempre inicializar con estado vacío
   const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
-  // Cargar desde localStorage solo en el cliente
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
         const storedCart = window.localStorage.getItem('cart');
         if (storedCart) {
           const parsedCart = JSON.parse(storedCart);
-          // Necesitas agregar una acción para cargar el cart
           dispatch({ type: 'LOAD_CART', payload: parsedCart });
         }
       } catch (error) {

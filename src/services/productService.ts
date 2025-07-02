@@ -14,7 +14,7 @@ export const productService = {
     try {
       const response = await apiClient.get('/products', {
         params: { search },
-        signal, // Pasar el AbortSignal a axios
+        signal,
       });
       return response.data || [];
     } catch (error) {
@@ -26,7 +26,7 @@ export const productService = {
   getProductById: async (id: string, signal?: AbortSignal): Promise<ProductDetail> => {
     try {
       const response = await apiClient.get(`/products/${id}`, {
-        signal, // Pasar el AbortSignal a axios
+        signal,
       });
       if (!response.data) {
         throw new Error(`Producto con ID ${id} no encontrado`);

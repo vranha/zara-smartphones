@@ -36,14 +36,11 @@
     display: none;
   }
 
-  // Cada item del grid
   > * {
-    // Móvil: objetos más grandes (280px)
     flex: 0 0 320px;
     min-width: 320px;
     pointer-events: auto;
 
-    // Desktop: objetos un poco más grandes (240px)
     @media (min-width: $breakpoint-desktop) {
       flex: 0 0 240px;
       min-width: 240px;

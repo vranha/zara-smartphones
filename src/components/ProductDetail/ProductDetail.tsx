@@ -1,7 +1,6 @@
-// src/components/ProductDetail/ProductDetail.tsx
 import { useState } from 'react';
 import { ColorOption, ProductDetail as ProductDetailType } from '@/types/Product';
-import { Container } from '@/components/Container/Container'; // Asumiendo que creaste este componente
+import { Container } from '@/components/Container/Container';
 
 import styles from './ProductDetail.module.scss';
 import ProductHeader from '../ProductHeader/ProductHeader';

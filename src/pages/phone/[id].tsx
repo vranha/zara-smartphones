@@ -1,10 +1,9 @@
-// src/pages/phone/[id].tsx
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
 import { productService } from '@/services/productService';
 import { ProductDetail as ProductDetailType } from '@/types/Product';
-import { ProductDetail } from '@/components/ProductDetail/ProductDetail'; // Este será nuestro componente principal
+import { ProductDetail } from '@/components/ProductDetail/ProductDetail';
 
 interface PageProps {
   product: ProductDetailType;
@@ -48,7 +47,6 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (context)
   try {
     const product = await productService.getProductById(id, abortController.signal);
 
-    // Verificar que el producto sea válido
     if (!product || !product.id) {
       return {
         notFound: true,

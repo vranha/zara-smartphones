@@ -2,7 +2,7 @@
 
 .imageGallery {
   width: 80%;
-  min-height: 400px; // Altura mínima
+  min-height: 400px;
 
   @media (min-width: $breakpoint-tablet) {
     min-height: 500px;
@@ -15,7 +15,7 @@
 }
 
 .mainImage {
-  position: relative; // Necesario para Image con fill
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
