@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ProductDetail as ProductDetailType } from '@/types/Product';
 import styles from './ProductPurchasePanel.module.scss';
 import { useCart } from '@/context/cart/CartContext';
@@ -12,9 +12,24 @@ interface Props {
 }
 
 export const ProductPurchasePanel = ({ product, selectedColor, setSelectedColor }: Props) => {
-  const [selectedStorage, setSelectedStorage] = useState(product.storageOptions[0]);
+  const defaultStorage = useMemo(() => {
+    return (
+      product.storageOptions.find((storage) => storage.price === product.basePrice) ||
+      product.storageOptions[0]
+    );
+  }, [product.storageOptions, product.basePrice]);
+
+  const [selectedStorage, setSelectedStorage] = useState(defaultStorage);
   const [hoveredColor, setHoveredColor] = useState<string | null>(null);
   const { cart, dispatch } = useCart();
+
+  useEffect(() => {
+    setSelectedStorage(defaultStorage);
+  }, [defaultStorage]);
+
+  const currentPrice = useMemo(() => {
+    return selectedStorage?.price || product.basePrice;
+  }, [selectedStorage?.price, product.basePrice]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,9 +48,10 @@ export const ProductPurchasePanel = ({ product, selectedColor, setSelectedColor 
 
     const itemToAdd: CartItem = {
       id: `${product.id}-${selectedColor.hexCode}-${selectedStorage.capacity}`,
+      code: product.id,
       name: product.name,
       brand: product.brand,
-      price: product.basePrice ? product.basePrice : 0,
+      price: currentPrice,
       imageUrl: selectedColor.imageUrl,
       color: selectedColor.name,
       storage: selectedStorage.capacity,
@@ -50,7 +66,7 @@ export const ProductPurchasePanel = ({ product, selectedColor, setSelectedColor 
     <div className={styles.productInfo}>
       <div>
         <h1 className={styles.name}>{product.name}</h1>
-        <p className={styles.price}>From {product.basePrice} EUR</p>
+        <p className={styles.price}>{currentPrice.toFixed(2)} EUR</p>
       </div>
 
       <div className={styles.options}>

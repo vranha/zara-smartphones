@@ -3,6 +3,7 @@ import { CartAction } from './cartReducer';
 
 export interface CartItem {
   id: string;
+  code: string;
   name: string;
   brand: string;
   price: number;
