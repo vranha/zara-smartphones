@@ -84,6 +84,15 @@ Para demostrar la escalabilidad del proyecto, he creado una rama alternativa (`f
 -   `npm run lint`: Analiza el código con ESLint.
 -   `npm run format`: Formatea todo el código.
 
+## 🧪 Testing
+
+El proyecto incluye una suite completa de **70+ tests** que cubren:
+
+- ✅ **Lógica de Negocio**: cartReducer y hooks complejos
+- ✅ **Componentes Críticos**: ProductPurchasePanel, CartContent
+- ✅ **Interacciones de Usuario**: SearchInput, CartItem
+- ✅ **Componentes de Presentación**: PhoneCard, Container
+
 
 ## Autor
 

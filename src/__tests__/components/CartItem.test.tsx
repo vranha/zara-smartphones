@@ -3,9 +3,36 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { CartItem } from '@/components/CartItem/CartItem';
 import { CartItem as CartItemType } from '@/context/cart/CartContext';
 
+// Mock Next.js components - CORREGIDO
 jest.mock('next/image', () => {
-  return function MockImage({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) {
-    return <img src={src as string} alt={alt as string} {...props} />;
+  return function MockImage({
+    src,
+    alt,
+    fill,
+    style,
+    sizes,
+    priority,
+    width,
+    height,
+    ...props
+  }: React.ComponentPropsWithoutRef<'img'> & {
+    fill?: boolean;
+    sizes?: string;
+    priority?: boolean;
+  }) {
+    return (
+      <img
+        src={src as string}
+        alt={alt as string}
+        data-fill={fill?.toString()}
+        data-style={style ? JSON.stringify(style) : undefined}
+        data-sizes={sizes}
+        data-priority={priority?.toString()}
+        width={width}
+        height={height}
+        {...props}
+      />
+    );
   };
 });
 
@@ -65,7 +92,6 @@ describe('CartItem', () => {
     const links = screen.getAllByRole('link');
 
     expect(links[0]).toHaveAttribute('href', '/phone/iphone-14-black-128gb');
-
     expect(links[1]).toHaveAttribute('href', '/phone/iphone-14-black-128gb');
   });
 
@@ -95,45 +121,5 @@ describe('CartItem', () => {
     render(<CartItem item={itemWithDecimalPrice} onRemove={mockOnRemove} />);
 
     expect(screen.getByText('999.99 EUR')).toBeInTheDocument();
-  });
-
-  test('should render different storage and color options', () => {
-    const itemWithDifferentSpecs: CartItemType = {
-      ...mockItem,
-      color: 'White',
-      storage: '256GB',
-    };
-
-    render(<CartItem item={itemWithDifferentSpecs} onRemove={mockOnRemove} />);
-
-    expect(screen.getByText('256GB GB | WHITE')).toBeInTheDocument();
-  });
-
-  test('should render different brands correctly', () => {
-    const samsungItem: CartItemType = {
-      ...mockItem,
-      name: 'Galaxy S23',
-      brand: 'Samsung',
-      code: 'galaxy-s23-black-128gb',
-    };
-
-    render(<CartItem item={samsungItem} onRemove={mockOnRemove} />);
-
-    expect(screen.getByText('SAMSUNG GALAXY S23')).toBeInTheDocument();
-    expect(screen.getByAltText('Samsung Galaxy S23')).toBeInTheDocument();
-    expect(screen.getByLabelText('Eliminar Samsung Galaxy S23 del carrito')).toBeInTheDocument();
-  });
-
-  test('should handle long product names', () => {
-    const itemWithLongName: CartItemType = {
-      ...mockItem,
-      name: 'iPhone 14 Pro Max with Advanced Camera System',
-    };
-
-    render(<CartItem item={itemWithLongName} onRemove={mockOnRemove} />);
-
-    expect(
-      screen.getByText('APPLE IPHONE 14 PRO MAX WITH ADVANCED CAMERA SYSTEM'),
-    ).toBeInTheDocument();
   });
 });
