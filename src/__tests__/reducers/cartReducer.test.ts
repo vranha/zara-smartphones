@@ -30,12 +30,11 @@ describe('cartReducer', () => {
     const initialState = { cart: [mockItem] };
     const action: CartAction = {
       type: 'ADD_TO_CART',
-      payload: mockItem, // Mismo item
+      payload: mockItem,
     };
 
     const result = cartReducer(initialState, action);
 
-    // Debe mantener solo 1 item (no duplicar)
     expect(result.cart).toHaveLength(1);
     expect(result).toEqual(initialState);
   });
@@ -111,7 +110,6 @@ describe('cartReducer', () => {
 
     const result = cartReducer(initialState, action);
 
-    // Debe retornar el estado sin cambios
     expect(result).toEqual(initialState);
   });
 });

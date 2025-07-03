@@ -4,7 +4,6 @@ import { CartProvider } from '@/context/cart/CartProvider';
 import { ProductDetail } from '@/types/Product';
 import toast from 'react-hot-toast';
 
-// Mock toast
 jest.mock('react-hot-toast', () => ({
   success: jest.fn(),
   error: jest.fn(),
@@ -12,7 +11,6 @@ jest.mock('react-hot-toast', () => ({
 
 const mockToast = toast as jest.Mocked<typeof toast>;
 
-// Mock product data
 const mockProduct: ProductDetail = {
   id: 'iphone-14',
   name: 'iPhone 14',

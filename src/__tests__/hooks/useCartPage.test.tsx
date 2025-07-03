@@ -4,14 +4,12 @@ import { CartProvider } from '@/context/cart/CartProvider';
 import { ReactNode } from 'react';
 import toast from 'react-hot-toast';
 
-// Mock react-hot-toast
 jest.mock('react-hot-toast', () => ({
   success: jest.fn(),
 }));
 
 const mockToast = toast as jest.Mocked<typeof toast>;
 
-// Wrapper simple para el provider
 const Wrapper = ({ children }: { children: ReactNode }) => <CartProvider>{children}</CartProvider>;
 
 describe('useCartPage', () => {

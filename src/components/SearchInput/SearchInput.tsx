@@ -39,7 +39,11 @@ export const SearchInput = ({
           </button>
         )}
       </div>
-      {!isLoading && <span className={styles.resultsCount}>{resultsCount} results</span>}
+      {!isLoading && (
+        <span role="status" aria-live="polite" className={styles.resultsCount}>
+          {resultsCount} results
+        </span>
+      )}
     </div>
   );
 };

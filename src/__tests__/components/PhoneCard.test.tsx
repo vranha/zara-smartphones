@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import PhoneCard from '@/components/PhoneCard/PhoneCard';
 import { ProductListItem } from '@/types/Product';
 
-// Mock Next.js components
 jest.mock('next/image', () => {
   return function MockImage({
     src,

@@ -64,10 +64,8 @@ describe('CartItem', () => {
 
     const links = screen.getAllByRole('link');
 
-    // Image link
     expect(links[0]).toHaveAttribute('href', '/phone/iphone-14-black-128gb');
 
-    // Name link
     expect(links[1]).toHaveAttribute('href', '/phone/iphone-14-black-128gb');
   });
 

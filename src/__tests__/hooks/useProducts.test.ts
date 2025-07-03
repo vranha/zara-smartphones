@@ -1,9 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
-// Mock completo del hook useProducts antes de importarlo
 jest.mock('@/hooks/useProducts', () => ({
   useProducts: jest.fn((searchTerm: string) => {
-    // Simular comportamiento del hook
     if (searchTerm === 'error') {
       return {
         isLoading: false,
@@ -44,7 +42,6 @@ jest.mock('@/hooks/useProducts', () => ({
   }),
 }));
 
-// Ahora importar el hook mockeado
 import { useProducts } from '@/hooks/useProducts';
 
 describe('useProducts', () => {

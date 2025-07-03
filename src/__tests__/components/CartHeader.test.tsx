@@ -51,7 +51,6 @@ describe('CartHeader', () => {
     let heading = screen.getByRole('heading', { level: 1 });
     expect(heading).toHaveTextContent('CART (2)');
 
-    // Cambiar prop
     rerender(<CartHeader itemCount={5} />);
 
     heading = screen.getByRole('heading', { level: 1 });

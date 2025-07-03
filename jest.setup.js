@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 
-// Mock Next.js router - CAMBIO: definir directamente en el mock
 jest.mock('next/router', () => ({
   useRouter: jest.fn(() => ({
     route: '/',
@@ -22,7 +21,6 @@ jest.mock('next/router', () => ({
   })),
 }));
 
-// Mock Next.js Image component
 jest.mock('next/image', () => {
   return function Image({ src, alt, ...props }) {
     // eslint-disable-next-line @next/next/no-img-element
@@ -30,7 +28,6 @@ jest.mock('next/image', () => {
   };
 });
 
-// Mock react-hot-toast
 jest.mock('react-hot-toast', () => ({
   toast: {
     success: jest.fn(),

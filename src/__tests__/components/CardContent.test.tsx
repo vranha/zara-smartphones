@@ -2,12 +2,10 @@ import { render, screen } from '@testing-library/react';
 import { CartContent } from '@/components/CartContent/CartContent';
 import { useCartPage } from '@/hooks/useCartPage';
 
-// Mock del hook useCartPage
 jest.mock('@/hooks/useCartPage', () => ({
   useCartPage: jest.fn(),
 }));
 
-// Mock de los componentes hijos
 jest.mock('@/components/CartHeader/CartHeader', () => {
   return {
     CartHeader: ({ itemCount }: { itemCount: number }) => (
