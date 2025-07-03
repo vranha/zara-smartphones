@@ -2,7 +2,7 @@
 
 Aplicación web para la visualización y gestión de un catálogo de teléfonos móviles..
 
-**[➡️ Ver despliegue en Vercel](URL_DE_TU_DEPLOY)**
+**[➡️ Ver despliegue en Vercel](https://zara-smartphones-9951.vercel.app/)**
 
 ![App Screenshot](./public/screenshoots/screenshot-smartphones.png)
 
